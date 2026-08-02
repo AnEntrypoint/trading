@@ -5,7 +5,7 @@
 .gm/last-dispatch-ts
 .gm/last-instruction-ts
 .gm/long-gap-retry-state
-.gm/config-source-cache-default/
+.gm/config-source-cache-default*
 .gm/strip_comments.py
 eth-strategy-lab/.venv/
 eth-strategy-lab/__pycache__/
