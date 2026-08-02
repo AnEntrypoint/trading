@@ -1,12 +1,12 @@
 {
-  "generated_at_utc": "2026-08-02T20:51:18+00:00",
+  "generated_at_utc": "2026-08-02T21:56:27+00:00",
   "python": "C:\\dev\\trad\\eth-strategy-lab\\.venv\\Scripts\\python.exe",
   "steps": [
     {
       "script": "fetch_data.py",
       "status": "ok",
       "exit_code": 0,
-      "duration_s": 9.12,
+      "duration_s": 7.25,
       "stdout_tail": [
         "Trying binance ...",
         "  binance: 3272 rows, 2017-08-17 -> 2026-08-01",
@@ -27,7 +27,7 @@
       "script": "backtest.py",
       "status": "ok",
       "exit_code": 0,
-      "duration_s": 2.19,
+      "duration_s": 3.47,
       "stdout_tail": [
         "  sma_trend_100: 2",
         "  sma_trend_200: 6",
@@ -57,14 +57,14 @@
       "script": "fetch_multi.py",
       "status": "ok",
       "exit_code": 0,
-      "duration_s": 50.97,
+      "duration_s": 49.91,
       "stdout_tail": [
-        "LTCUSDT: ok: 3154 rows, 2017-12-13 -> 2026-08-01",
-        "ADAUSDT: ok: 3029 rows, 2018-04-17 -> 2026-08-01",
-        "DOGEUSDT: ok: 2585 rows, 2019-07-05 -> 2026-08-01",
-        "SOLUSDT: ok: 2182 rows, 2020-08-11 -> 2026-08-01",
-        "LINKUSDT: ok: 2755 rows, 2019-01-16 -> 2026-08-01",
-        "TRXUSDT: ok: 2974 rows, 2018-06-11 -> 2026-08-01",
+        "LTCUSDT: ok[binance]: 3154 rows, 2017-12-13 -> 2026-08-01",
+        "ADAUSDT: ok[binance]: 3029 rows, 2018-04-17 -> 2026-08-01",
+        "DOGEUSDT: ok[binance]: 2585 rows, 2019-07-05 -> 2026-08-01",
+        "SOLUSDT: ok[binance]: 2182 rows, 2020-08-11 -> 2026-08-01",
+        "LINKUSDT: ok[binance]: 2755 rows, 2019-01-16 -> 2026-08-01",
+        "TRXUSDT: ok[binance]: 2974 rows, 2018-06-11 -> 2026-08-01",
         "",
         "basket: 10/10 symbols fetched",
         "",
@@ -77,14 +77,14 @@
       ],
       "outputs": {
         "data/btc_usd_yahoo_daily.csv": 368816,
-        "data/fetch_multi_meta.json": 796
+        "data/fetch_multi_meta.json": 886
       }
     },
     {
       "script": "multi_asset.py",
       "status": "ok",
       "exit_code": 0,
-      "duration_s": 3.53,
+      "duration_s": 3.17,
       "stdout_tail": [
         " 2018-09-13 2020-09-11 2020-09-12 2021-03-12      1.305       1.222       0.730          50        4.875            424.7",
         " 2019-03-14 2021-03-12 2021-03-13 2021-09-10      2.619       2.430       2.097          50        0.557              7.8",
@@ -113,7 +113,7 @@
       "script": "risk_suite.py",
       "status": "ok",
       "exit_code": 0,
-      "duration_s": 10.88,
+      "duration_s": 12.48,
       "stdout_tail": [
         "mean/var full Kelly: 1.765; empirical: 1.485; Vince: 0.665; recommended for $100: 0.37",
         "",
@@ -145,7 +145,7 @@
       "script": "signal_today.py",
       "status": "ok",
       "exit_code": 0,
-      "duration_s": 2.0,
+      "duration_s": 2.16,
       "stdout_tail": [
         "topped up history from binance: latest completed close 2026-08-01",
         "",

@@ -23,6 +23,7 @@ META_PATH = DATA_DIR / "fetch_meta.json"
 
 START_DT = datetime(2017, 1, 1, tzinfo=timezone.utc)
 TIMEOUT = 25
+HEADERS = {"User-Agent": "Mozilla/5.0 (research; zero-capital academic use)"}
 
 
 def _now_ms() -> int:
@@ -89,6 +90,32 @@ def fetch_binance(limit_days: int | None = None,
     raise RuntimeError(f"Binance failed on all hosts: {last_err}")
 
 
+def fetch_yahoo(limit_days: int | None = None,
+                symbol: str = "ETH-USD",
+                start_dt: datetime = START_DT) -> pd.DataFrame:
+    """Unauthenticated Yahoo Finance chart API; geo-tolerant Binance fallback."""
+    p1 = int(start_dt.timestamp())
+    if limit_days is not None:
+        p1 = max(p1, int(time.time()) - limit_days * 86_400)
+    p2 = int(datetime.now(timezone.utc).timestamp())
+    resp = requests.get(
+        f"https://query1.finance.yahoo.com/v8/finance/chart/{symbol}",
+        params={"period1": p1, "period2": p2, "interval": "1d"},
+        headers=HEADERS, timeout=TIMEOUT,
+    )
+    resp.raise_for_status()
+    result = resp.json()["chart"]["result"][0]
+    ts = result.get("timestamp") or []
+    q = result["indicators"]["quote"][0]
+    rows = [(t * 1000, o, h, l, c, v)
+            for t, o, h, l, c, v in zip(ts, q["open"], q["high"], q["low"],
+                                        q["close"], q["volume"])
+            if c is not None]
+    if not rows:
+        raise RuntimeError("Yahoo returned no rows")
+    return _to_df(rows, "yahoo")
+
+
                                                                           
 def fetch_kraken(limit_days: int | None = None) -> pd.DataFrame:
     url = "https://api.kraken.com/0/public/OHLC"
@@ -152,6 +179,7 @@ def fetch_coingecko(limit_days: int | None = None) -> pd.DataFrame:
 
 SOURCES = [
     ("binance", fetch_binance),
+    ("yahoo", fetch_yahoo),
     ("kraken", fetch_kraken),
     ("coingecko", fetch_coingecko),
 ]

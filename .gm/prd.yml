@@ -1,1 +1,5 @@
-[]
+- id: ci-fetch-geo-resilience
+  title: 'Fix CI data-fetch failure: Yahoo fallback for ETH and basket'
+  detail: 'CI run 30767633686 failed at fetch_data.py: api.binance.com and api-gcp return 451 from GitHub runner IPs; Kraken OHLC returns at most the latest 720 daily candles (witnessed locally exec_js-14: 720 rows, 2024-08-12 -> 2026-08-01) so it can never pass full-history validation (>2000 rows); CoinGecko now 401 without a key (witnessed). Fix: add fetch_yahoo (unauthenticated chart API, already proven for BTC-USD in fetch_multi.py) as the fallback after binance in fetch_data.py for ETH-USD, and add the same per-symbol Yahoo fallback (XUSDT -> X-USD) in fetch_multi.py for the 10-asset basket. Re-witness: local run_all green with binance hosts overridden to fail (simulate the 451), then CI green on push.'
+  commit_comment: Add Yahoo fallback for ETH + basket so CI survives Binance geo-block
+  status: pending

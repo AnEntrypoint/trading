@@ -1,16 +1,16 @@
 {
   "basket": {
-    "BTCUSDT": "ok: 3272 rows, 2017-08-17 -> 2026-08-01",
-    "ETHUSDT": "ok: 3272 rows, 2017-08-17 -> 2026-08-01",
-    "BNBUSDT": "ok: 3191 rows, 2017-11-06 -> 2026-08-01",
-    "XRPUSDT": "ok: 3012 rows, 2018-05-04 -> 2026-08-01",
-    "LTCUSDT": "ok: 3154 rows, 2017-12-13 -> 2026-08-01",
-    "ADAUSDT": "ok: 3029 rows, 2018-04-17 -> 2026-08-01",
-    "DOGEUSDT": "ok: 2585 rows, 2019-07-05 -> 2026-08-01",
-    "SOLUSDT": "ok: 2182 rows, 2020-08-11 -> 2026-08-01",
-    "LINKUSDT": "ok: 2755 rows, 2019-01-16 -> 2026-08-01",
-    "TRXUSDT": "ok: 2974 rows, 2018-06-11 -> 2026-08-01"
+    "BTCUSDT": "ok[binance]: 3272 rows, 2017-08-17 -> 2026-08-01",
+    "ETHUSDT": "ok[binance]: 3272 rows, 2017-08-17 -> 2026-08-01",
+    "BNBUSDT": "ok[binance]: 3191 rows, 2017-11-06 -> 2026-08-01",
+    "XRPUSDT": "ok[binance]: 3012 rows, 2018-05-04 -> 2026-08-01",
+    "LTCUSDT": "ok[binance]: 3154 rows, 2017-12-13 -> 2026-08-01",
+    "ADAUSDT": "ok[binance]: 3029 rows, 2018-04-17 -> 2026-08-01",
+    "DOGEUSDT": "ok[binance]: 2585 rows, 2019-07-05 -> 2026-08-01",
+    "SOLUSDT": "ok[binance]: 2182 rows, 2020-08-11 -> 2026-08-01",
+    "LINKUSDT": "ok[binance]: 2755 rows, 2019-01-16 -> 2026-08-01",
+    "TRXUSDT": "ok[binance]: 2974 rows, 2018-06-11 -> 2026-08-01"
   },
   "extended_btc": "yahoo: 4337 rows, 2014-09-17 -> 2026-08-01 -> C:\\dev\\trad\\eth-strategy-lab\\data\\btc_usd_yahoo_daily.csv",
-  "fetched_at_utc": "2026-08-02T20:52:20+00:00"
+  "fetched_at_utc": "2026-08-02T21:57:27+00:00"
 }

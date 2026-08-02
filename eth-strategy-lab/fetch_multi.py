@@ -32,47 +32,32 @@ HEADERS = {"User-Agent": "Mozilla/5.0 (research; zero-capital academic use)"}
 
 
 def fetch_basket() -> dict[str, str]:
-    """Download the Binance basket. Returns {symbol: status}."""
+    """Download the basket, Binance first with Yahoo as geo-tolerant fallback."""
     status = {}
     for sym in BASKET:
-        try:
-            df = fetch_data.fetch_binance(symbol=sym)
-            problems = validate(df, sym, min_rows=MIN_ROWS)
-            if problems:
-                status[sym] = "FAILED validation: " + "; ".join(problems)
-                continue
-            out = DATA_DIR / f"{sym}_daily.csv"
-            df.to_csv(out, index=False)
-            status[sym] = (f"ok: {len(df)} rows, "
-                           f"{df['date'].iloc[0].date()} -> {df['date'].iloc[-1].date()}")
-            print(f"{sym}: {status[sym]}")
-        except Exception as exc:                                       
-            status[sym] = f"FAILED: {exc}"
-            print(f"{sym}: {status[sym]}")
+        ticker = sym.replace("USDT", "-USD")
+        for source, fetch in (("binance", lambda: fetch_data.fetch_binance(symbol=sym)),
+                              ("yahoo", lambda: fetch_data.fetch_yahoo(symbol=ticker))):
+            try:
+                df = fetch()
+                problems = validate(df, sym, min_rows=MIN_ROWS)
+                if problems:
+                    status[sym] = "FAILED validation: " + "; ".join(problems)
+                    continue
+                out = DATA_DIR / f"{sym}_daily.csv"
+                df.to_csv(out, index=False)
+                status[sym] = (f"ok[{source}]: {len(df)} rows, "
+                               f"{df['date'].iloc[0].date()} -> {df['date'].iloc[-1].date()}")
+                break
+            except Exception as exc:
+                status[sym] = f"FAILED: {exc}"
+        print(f"{sym}: {status[sym]}")
         time.sleep(0.3)
     return status
 
 
-                                                                        
 def fetch_yahoo_btc() -> pd.DataFrame:
-    p1 = int(BTC_START.timestamp())
-    p2 = int(datetime.now(timezone.utc).timestamp())
-    resp = requests.get(
-        f"https://query1.finance.yahoo.com/v8/finance/chart/BTC-USD",
-        params={"period1": p1, "period2": p2, "interval": "1d"},
-        headers=HEADERS, timeout=TIMEOUT,
-    )
-    resp.raise_for_status()
-    result = resp.json()["chart"]["result"][0]
-    ts = result["timestamp"]
-    q = result["indicators"]["quote"][0]
-    rows = [(t * 1000, o, h, l, c, v)
-            for t, o, h, l, c, v in zip(ts, q["open"], q["high"], q["low"],
-                                        q["close"], q["volume"])
-            if c is not None]
-    if not rows:
-        raise RuntimeError("Yahoo returned no rows")
-    return _to_df(rows, "yahoo")
+    return fetch_data.fetch_yahoo(symbol="BTC-USD", start_dt=BTC_START)
 
 
 def fetch_cryptocompare_btc() -> pd.DataFrame:
