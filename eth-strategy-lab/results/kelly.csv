@@ -1,0 +1,7 @@
+method,fraction,mc_1y_maxdd_p50,mc_1y_maxdd_p99,mc_1y_ruin,mc_3y_maxdd_p50,mc_3y_maxdd_p99,mc_3y_ruin
+full_kelly_mean_var,1.5,0.4869,0.9354,0.1114,0.725,0.9825,0.1098
+full_kelly_empirical,1.485,0.4859,0.9329,0.1139,0.7263,0.9801,0.1089
+half_kelly_empirical,0.7425,0.2646,0.6649,0.0143,0.4285,0.7937,0.0206
+quarter_kelly_empirical,0.3713,0.1383,0.3968,0.0002,0.2337,0.5194,0.001
+vince_optimal_f,0.665,0.2387,0.6171,0.0095,0.3947,0.7492,0.0134
+recommended_deployment,0.3713,,,,,,

@@ -1,0 +1,172 @@
+{
+  "generated_at_utc": "2026-08-02T20:51:18+00:00",
+  "python": "C:\\dev\\trad\\eth-strategy-lab\\.venv\\Scripts\\python.exe",
+  "steps": [
+    {
+      "script": "fetch_data.py",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 9.12,
+      "stdout_tail": [
+        "Trying binance ...",
+        "  binance: 3272 rows, 2017-08-17 -> 2026-08-01",
+        "",
+        "SUCCESS source=binance",
+        "rows=3272  range=2017-08-17 -> 2026-08-01",
+        "saved -> C:\\dev\\trad\\eth-strategy-lab\\data\\ethusdt_daily.csv"
+      ],
+      "stderr_tail": [
+        ""
+      ],
+      "outputs": {
+        "data/ethusdt_daily.csv": 176496,
+        "data/fetch_meta.json": 144
+      }
+    },
+    {
+      "script": "backtest.py",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 2.19,
+      "stdout_tail": [
+        "  sma_trend_100: 2",
+        "  sma_trend_200: 6",
+        "",
+        "=== FINAL HOLDOUT TAIL (2026-02-08 -> 2026-08-01, frozen strategies) ===",
+        "                      total_return_pct  CAGR_pct  ann_vol_pct  sharpe  sortino  max_drawdown_pct  calmar  n_trades  fees_pct_initial  pct_days_invested",
+        "buy_hold                         -11.6    -22.81         54.9  -0.197   -0.292             -35.2  -0.648       0.0              0.00              100.0",
+        "sma_trend_50                      -1.2     -2.58         33.7   0.088    0.138             -17.5  -0.147       5.0              0.48               45.1",
+        "sma_trend_100                    -13.9    -27.04         14.6  -2.073   -2.447             -14.1  -1.920       6.0              0.57               18.3",
+        "sma_trend_200                      0.0      0.00          0.0     NaN      NaN               0.0     NaN       0.0              0.00                0.0",
+        "vol_target_trend                 -13.8    -26.70         14.5  -2.051   -2.424             -14.1  -1.895       8.0              0.55               18.3",
+        "rebalance_50_50_band              -4.9     -9.92         27.2  -0.242   -0.358             -18.7  -0.532       3.0              0.06              100.0",
+        "saved -> C:\\dev\\trad\\eth-strategy-lab\\equity_curves.png"
+      ],
+      "stderr_tail": [
+        ""
+      ],
+      "outputs": {
+        "results/metrics_full.csv": 647,
+        "results/walk_forward.csv": 1205,
+        "results/walk_forward_oos_metrics.csv": 201,
+        "results/holdout_tail.csv": 536,
+        "equity_curves.png": 162010
+      }
+    },
+    {
+      "script": "fetch_multi.py",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 50.97,
+      "stdout_tail": [
+        "LTCUSDT: ok: 3154 rows, 2017-12-13 -> 2026-08-01",
+        "ADAUSDT: ok: 3029 rows, 2018-04-17 -> 2026-08-01",
+        "DOGEUSDT: ok: 2585 rows, 2019-07-05 -> 2026-08-01",
+        "SOLUSDT: ok: 2182 rows, 2020-08-11 -> 2026-08-01",
+        "LINKUSDT: ok: 2755 rows, 2019-01-16 -> 2026-08-01",
+        "TRXUSDT: ok: 2974 rows, 2018-06-11 -> 2026-08-01",
+        "",
+        "basket: 10/10 symbols fetched",
+        "",
+        "=== Extended BTC history (2014+) ===",
+        "extended BTC: trying yahoo ...",
+        "  yahoo: 4337 rows, 2014-09-17 -> 2026-08-01 -> C:\\dev\\trad\\eth-strategy-lab\\data\\btc_usd_yahoo_daily.csv"
+      ],
+      "stderr_tail": [
+        ""
+      ],
+      "outputs": {
+        "data/btc_usd_yahoo_daily.csv": 368816,
+        "data/fetch_multi_meta.json": 796
+      }
+    },
+    {
+      "script": "multi_asset.py",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 3.53,
+      "stdout_tail": [
+        " 2018-09-13 2020-09-11 2020-09-12 2021-03-12      1.305       1.222       0.730          50        4.875            424.7",
+        " 2019-03-14 2021-03-12 2021-03-13 2021-09-10      2.619       2.430       2.097          50        0.557              7.8",
+        " 2019-09-12 2021-09-10 2021-09-11 2022-03-11      2.275       1.674       0.960          50       -0.704            -16.6",
+        " 2020-03-12 2022-03-11 2022-03-12 2022-09-09      1.980       1.739       1.114          50       -1.635            -21.3",
+        " 2020-09-10 2022-09-09 2022-09-10 2023-03-10      1.554       1.613       1.019         100        0.102             -1.0",
+        " 2021-03-11 2023-03-10 2023-03-11 2023-09-08     -0.118      -0.106      -0.972         100        0.638              9.1",
+        " 2021-09-09 2023-09-08 2023-09-09 2024-03-08     -0.142       0.200       0.170         100        4.111            139.2",
+        " 2022-03-10 2024-03-08 2024-03-09 2024-09-06      1.271       1.385       1.861         200       -0.541            -16.6",
+        " 2022-09-08 2024-09-06 2024-09-07 2025-03-07      1.323       0.957       1.375         200        1.183             24.7",
+        " 2023-03-09 2025-03-07 2025-03-08 2025-09-05      1.596       1.244       1.438          50        1.503             19.6",
+        " 2023-09-07 2025-09-05 2025-09-06 2026-03-06      1.659       1.431       1.261          50       -0.843             -8.1",
+        " 2024-03-07 2026-03-06 2026-03-07 2026-08-01      0.501       0.315       0.132          50       -0.572             -6.5"
+      ],
+      "stderr_tail": [
+        ""
+      ],
+      "outputs": {
+        "results/multi_asset_table.csv": 1236,
+        "results/pooled_window_stats.csv": 15851,
+        "results/portfolio_ew.csv": 338,
+        "results/walk_forward_btc_yahoo.csv": 1668
+      }
+    },
+    {
+      "script": "risk_suite.py",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 10.88,
+      "stdout_tail": [
+        "mean/var full Kelly: 1.765; empirical: 1.485; Vince: 0.665; recommended for $100: 0.37",
+        "",
+        "=== row 7: execution timing audit (open t+1 fills vs close) ===",
+        "           strategy      fill  sharpe  CAGR_pct  max_drawdown_pct  total_return_pct  sharpe_delta  cagr_delta_pct",
+        "walkforward_overlay close_t+1  1.0067   49.9972          -64.3613         1576.8961           NaN             NaN",
+        "walkforward_overlay  open_t+1  1.0055   49.9025          -64.4078         1569.5540       -0.0012           -0.09",
+        "       sma_trend_50 close_t+1  1.0143   53.0918          -64.4242         4427.2419           NaN             NaN",
+        "       sma_trend_50  open_t+1  1.0166   53.3065          -64.4246         4484.3829        0.0023            0.21",
+        "",
+        "=== CONSOLIDATED RISK SUITE SUMMARY ===",
+        "slippage break-even: 0.958 per side",
+        "DSR: 0.9848 | PBO: 0.243 | recommended fraction: 0.37"
+      ],
+      "stderr_tail": [
+        ""
+      ],
+      "outputs": {
+        "results/slippage_sensitivity.csv": 1721,
+        "results/yield_scenarios.csv": 660,
+        "results/risk_suite.csv": 626,
+        "results/pbo.csv": 3413,
+        "results/monte_carlo.csv": 874,
+        "results/kelly.csv": 485,
+        "results/execution_timing.csv": 366
+      }
+    },
+    {
+      "script": "signal_today.py",
+      "status": "ok",
+      "exit_code": 0,
+      "duration_s": 2.0,
+      "stdout_tail": [
+        "topped up history from binance: latest completed close 2026-08-01",
+        "",
+        "================ TODAY'S DASHBOARD ================",
+        "signal date (last completed close): 2026-08-01",
+        "ETH close:                          1,844.94",
+        "---------------------------------------------------",
+        "sma_trend(100):   FLAT   (close 1,844.94 vs SMA100 1,936.45)",
+        "vol_target_trend: size 0.00   (30d ann. vol 41.8%, target 60% -> raw size 1.00, trend-gated)",
+        "rebalance 50/50 (band): ETH weight 49.8%  band [45-55%]  -> rebalance not triggered",
+        "===================================================",
+        "Signals apply from this close to the next day's close.",
+        "ledger: row for 2026-08-01 already exists - not duplicating"
+      ],
+      "stderr_tail": [
+        ""
+      ],
+      "outputs": {
+        "paper_ledger.csv": 119
+      }
+    }
+  ],
+  "overall": "ok"
+}

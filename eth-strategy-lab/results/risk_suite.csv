@@ -1,0 +1,13 @@
+metric,value,note
+n_trials,7.0,3 SMA + vol_target + 2 rebalance modes + WF overlay
+observed_oos_sharpe_ann,1.0067,stitched overlay
+benchmark_max_sharpe_ann,0.1537,expected max SR under null
+dsr,0.9848,Deflated Sharpe Ratio (probability)
+psr_vs_zero,0.9947,raw probabilistic SR at benchmark 0
+sample_days,2541.0,OOS length
+skew,-1.0926,OOS daily rets
+kurtosis_pearson,32.4119,excess + 3
+trial_sr_variance,3.365e-05,daily SR variance across trials
+slippage_breakeven_pct,0.958,overlay OOS Sharpe = hold Sharpe
+pbo,0.2429,CSCV overfitting probability
+kelly_recommended_fraction,0.3713,deployment fraction of account

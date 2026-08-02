@@ -1,0 +1,5 @@
+strategy,fill,sharpe,CAGR_pct,max_drawdown_pct,total_return_pct,sharpe_delta,cagr_delta_pct
+walkforward_overlay,close_t+1,1.0067,49.9972,-64.3613,1576.8961,,
+walkforward_overlay,open_t+1,1.0055,49.9025,-64.4078,1569.554,-0.0012,-0.09
+sma_trend_50,close_t+1,1.0143,53.0918,-64.4242,4427.2419,,
+sma_trend_50,open_t+1,1.0166,53.3065,-64.4246,4484.3829,0.0023,0.21

@@ -1,0 +1,14 @@
+# --- gm managed gitignore block (transient runtime emission) ---
+.agentplug-kv/
+.gm/exec-spool/
+.gm/*.lock
+.gm/last-dispatch-ts
+.gm/last-instruction-ts
+.gm/long-gap-retry-state
+.gm/config-source-cache-default/
+.gm/strip_comments.py
+eth-strategy-lab/.venv/
+eth-strategy-lab/__pycache__/
+eth-strategy-lab/.run_daily.lock
+**/__pycache__/
+# --- end gm managed block ---

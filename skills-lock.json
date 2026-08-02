@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "trading": {
+      "source": "AnEntrypoint/pmt",
+      "sourceType": "github",
+      "skillPath": "skills/trading/SKILL.md",
+      "computedHash": "32c837f8e1fd5258e71232edebff6f55e3701993769cdd963d4f20e943534e12"
+    }
+  }
+}
